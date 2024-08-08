@@ -1,0 +1,52 @@
+.fuelsurch-container {
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(to right, #ece9e6, #ffffff);
+  }
+  
+  .fuelsurch-container h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .fuelsurch-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .fuelsurch-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
+    max-width: 250px;
+    flex: 1;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .fuelsurch-card h2 {
+    font-size: 1.5em;
+    color: #444;
+  }
+  
+  .fuelsurch-card p {
+    font-size: 1.2em;
+    color: #555;
+  }
+  
+  .fuelsurch-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  @media (max-width: 768px) {
+    .fuelsurch-cards {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

@@ -1,0 +1,83 @@
+.admin-dashboard {
+    padding: 20px;
+  }
+  
+  .dashboard-header {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .error-message {
+    color: red;
+    margin-bottom: 10px;
+  }
+  
+  .users-section,
+  .shipments-section {
+    margin-bottom: 20px;
+  }
+  
+  .section-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .user-list,
+  .shipment-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between the user boxes */
+  }
+  
+  .user-item {
+    flex: 1 1 calc(33% - 15px); /* Adjust the width of each box; 33% with gap */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+  }
+  
+  .user-item:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .user-name {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .delete-icon {
+    cursor: pointer;
+    color: red;
+    margin-top: 10px;
+  }
+  
+  .shipment-item {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+  }
+  
+  .default-message {
+    color: #777;
+  }
+  
+  .access-denied {
+    color: red;
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 20px;
+  }
+  

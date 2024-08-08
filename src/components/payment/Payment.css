@@ -1,0 +1,57 @@
+.payment-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+  .payment-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  .payment-container p {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .payment-options {
+    margin: 20px 0;
+    text-align: left;
+  }
+  
+  .payment-options label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .payment-options input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  .upi-details, .paypal-details {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    background-color: #fff;
+  }
+  
+  .pay-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .pay-button:hover {
+    background-color: #0056b3;
+  }
+  

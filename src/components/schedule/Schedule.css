@@ -1,0 +1,10 @@
+.schedulecss{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.scheduletext{
+    font-size: 40px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(74, 28, 19);
+}

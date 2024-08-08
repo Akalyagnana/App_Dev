@@ -1,0 +1,318 @@
+{
+  "users": [
+    {
+      "id": "2",
+      "name": "Admin",
+      "email": "admin@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "c497",
+      "name": "qwerty",
+      "email": "qwerty@gmail.com",
+      "phone": "12343455",
+      "password": "Qwerty*1234",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "zipcode": "637211"
+    },
+    {
+      "id": "1cb1",
+      "name": "Dummy",
+      "email": "dummy@gmail.com",
+      "phone": "923400334",
+      "password": "Dummy@123",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "zipcode": "637211"
+    },
+    {
+      "id": "9d10",
+      "name": "Akalya",
+      "email": "akalyag@gmail.com",
+      "phone": "456784456",
+      "password": "123",
+      "country": "India",
+      "state": "Tamilnadu",
+      "zipcode": "641008"
+    }
+  ],
+  "pickup": [
+    {
+      "id": "0ebe",
+      "item": "bottle",
+      "weight": "10ton",
+      "pickUpTime": "8:30",
+      "dropAddress": "qwetgfd"
+    },
+    {
+      "id": "cc0d",
+      "item": "k",
+      "weight": "k",
+      "pickUpTime": "l",
+      "dropAddress": "l"
+    },
+    {
+      "id": "fc7c",
+      "item": "bag",
+      "weight": "1000",
+      "pickUpTime": "11:37",
+      "dropAddress": "qwertyui",
+      "userId": null
+    },
+    {
+      "id": "18ed",
+      "item": "bnm",
+      "weight": "8",
+      "pickUpTime": "07:04",
+      "dropAddress": "hhj",
+      "userId": null
+    },
+    {
+      "id": "c792",
+      "item": "xdf",
+      "weight": "66",
+      "pickUpTime": "20:05",
+      "dropAddress": "rty",
+      "userId": null
+    },
+    {
+      "id": "0c42",
+      "item": "a",
+      "weight": "4",
+      "pickUpTime": "22:51",
+      "dropAddress": "aa",
+      "userId": null
+    },
+    {
+      "id": "a8ad",
+      "item": "qwwefd",
+      "weight": "23",
+      "pickUpTime": "21:55",
+      "dropAddress": "asdfghjfhvbebvuyiusdkjbciuegfisjdhbviusgdicjk",
+      "userId": null
+    },
+    {
+      "id": "652a",
+      "item": "asdf",
+      "weight": "32",
+      "pickUpTime": "14:37",
+      "dropAddress": "wefd",
+      "userId": "1cb1"
+    },
+    {
+      "id": "c94c",
+      "item": "k",
+      "weight": "35",
+      "pickUpTime": "18:31",
+      "dropAddress": "adfghj",
+      "userId": null
+    },
+    {
+      "id": "2990",
+      "item": "Apple",
+      "weight": "50",
+      "pickUpTime": "23:25",
+      "dropAddress": "tyuiop[ ertyuiop",
+      "userId": null
+    },
+    {
+      "id": "53ef",
+      "item": "bag",
+      "weight": "34",
+      "pickUpTime": "16:32",
+      "dropAddress": "qwerty",
+      "userId": "9d10"
+    },
+    {
+      "id": "11a2",
+      "item": "qwe",
+      "weight": "56",
+      "pickUpTime": "07:23",
+      "dropAddress": "asdf",
+      "userId": "9d10"
+    },
+    {
+      "id": "db7c",
+      "item": "Fragile",
+      "weight": "30",
+      "pickUpTime": "03:00",
+      "dropAddress": "tyuiop[ ertyuiop",
+      "userId": "9d10",
+      "origin": "coimbatore",
+      "destination": "erode",
+      "height": "15",
+      "width": "16",
+      "length": "20",
+      "cost": 348
+    },
+    {
+      "id": "b7b5",
+      "item": "ghjk",
+      "weight": "20",
+      "pickUpTime": "15:30",
+      "dropAddress": "zxcvbnm,",
+      "userId": "9d10",
+      "origin": "coimbatore",
+      "destination": "erode",
+      "height": "20",
+      "width": "20",
+      "length": "10",
+      "cost": 240
+    },
+    {
+      "id": "3ec6",
+      "item": "awesrdgh",
+      "weight": "10",
+      "pickUpTime": "14:24",
+      "dropAddress": "asdfghjk",
+      "userId": "9d10",
+      "origin": "coimbatore",
+      "destination": "erode",
+      "height": "10",
+      "width": "14",
+      "length": "5",
+      "cost": 107
+    },
+    {
+      "id": "feac",
+      "item": "Fragile",
+      "weight": "30",
+      "pickUpTime": "03:21",
+      "dropAddress": "asdfgh",
+      "userId": "9d10",
+      "origin": "coimbatore",
+      "destination": "Coimbatore",
+      "height": "15",
+      "width": "15",
+      "length": "10",
+      "cost": 322.5
+    }
+  ],
+  "feedback": [
+    {
+      "id": "8181",
+      "userId": null,
+      "name": "wer",
+      "email": "jkjj@gmail.com",
+      "message": "kjjjoioiikk"
+    },
+    {
+      "id": "c225",
+      "userId": null,
+      "name": "gohul",
+      "email": "gohul@gmail.com",
+      "message": "kjkjjj"
+    }
+  ],
+  "country": [
+    {
+      "United States": [
+        "Alabama",
+        "Alaska",
+        "Arizona",
+        "Arkansas",
+        "California",
+        "Colorado",
+        "Connecticut",
+        "Delaware",
+        "Florida",
+        "Georgia",
+        "Hawaii",
+        "Idaho",
+        "Illinois",
+        "Indiana",
+        "Iowa",
+        "Kansas",
+        "Kentucky",
+        "Louisiana",
+        "Maine",
+        "Maryland",
+        "Massachusetts",
+        "Michigan",
+        "Minnesota",
+        "Mississippi",
+        "Missouri",
+        "Montana",
+        "Nebraska",
+        "Nevada",
+        "New Hampshire",
+        "New Jersey",
+        "New Mexico",
+        "New York",
+        "North Carolina",
+        "North Dakota",
+        "Ohio",
+        "Oklahoma",
+        "Oregon",
+        "Pennsylvania",
+        "Rhode Island",
+        "South Carolina",
+        "South Dakota",
+        "Tennessee",
+        "Texas",
+        "Utah",
+        "Vermont",
+        "Virginia",
+        "Washington",
+        "West Virginia",
+        "Wisconsin",
+        "Wyoming"
+      ],
+      "Canada": [
+        "Alberta",
+        "British Columbia",
+        "Manitoba",
+        "New Brunswick",
+        "Newfoundland and Labrador",
+        "Northwest Territories",
+        "Nova Scotia",
+        "Nunavut",
+        "Ontario",
+        "Prince Edward Island",
+        "Quebec",
+        "Saskatchewan",
+        "Yukon"
+      ],
+      "Australia": [
+        "New South Wales",
+        "Queensland",
+        "South Australia",
+        "Tasmania",
+        "Victoria",
+        "Western Australia"
+      ],
+      "India": [
+        "Andhra Pradesh",
+        "Arunachal Pradesh",
+        "Assam",
+        "Bihar",
+        "Chhattisgarh",
+        "Goa",
+        "Gujarat",
+        "Haryana",
+        "Himachal Pradesh",
+        "Jharkhand",
+        "Karnataka",
+        "Kerala",
+        "Madhya Pradesh",
+        "Maharashtra",
+        "Manipur",
+        "Meghalaya",
+        "Mizoram",
+        "Nagaland",
+        "Odisha",
+        "Punjab",
+        "Rajasthan",
+        "Sikkim",
+        "Tamil Nadu",
+        "Telangana",
+        "Tripura",
+        "Uttar Pradesh",
+        "Uttarakhand",
+        "West Bengal"
+      ],
+      "id": "77f7"
+    }
+  ]
+}

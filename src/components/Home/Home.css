@@ -1,0 +1,41 @@
+.usrnme {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+  }
+  
+  .trackerhome {
+    margin: 2rem auto;
+    padding: 1rem;
+    max-width: 600px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .manageship {
+    font-size: 1.2rem;
+    margin: 2rem 0;
+    text-align: center;
+  }
+  
+  .homemangefet {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .pickupshe, .findloc, .fulesurchage, .FAQ {
+    margin: 1rem;
+    padding: 1rem;
+    width: 200px;
+    text-align: center;
+    background-color: #e0f7fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pickupshetex {
+    font-size: 1rem;
+    color: #00796b;
+  }
+  
