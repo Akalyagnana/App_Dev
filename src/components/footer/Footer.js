@@ -8,10 +8,8 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-links">
           <NavLink to="/aboutus" className="footer-link">About Us</NavLink>
-          <NavLink to="/contactus" className="footer-link">Contact Us</NavLink>
+          <NavLink to="/contactus" className="footer-link">Feedback</NavLink>
           <NavLink to="/faq" className="footer-link">FAQ</NavLink>
-          {/* <NavLink to="/terms" className="footer-link">Terms of Service</NavLink>
-          <NavLink to="/privacy" className="footer-link">Privacy Policy</NavLink> */}
         </div>
         <div className="footer-social">
           <a href="https://facebook.com" className="social-icon" target="_blank" rel="noopener noreferrer">

@@ -1,41 +1,65 @@
-.usrnme {
-    font-size: 1.2rem;
-    margin: 1rem 0;
-  }
-  
-  .trackerhome {
-    margin: 2rem auto;
-    padding: 1rem;
-    max-width: 600px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .manageship {
-    font-size: 1.2rem;
-    margin: 2rem 0;
+.usrnme{
+    font-size: 30px;
     text-align: center;
-  }
-  
-  .homemangefet {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.trackerhome{
+    background-color: cornsilk;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 20px;
+    align-items: center;
+    
+}
+
+.manageship{
+    font-size: 40px;
+    margin-top: 20px;
+    color: rgb(118, 118, 159);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+}
+
+.homemangefet{
+    margin-top: 50px;
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
-    flex-wrap: wrap;
-  }
-  
-  .pickupshe, .findloc, .fulesurchage, .FAQ {
-    margin: 1rem;
-    padding: 1rem;
-    width: 200px;
+}
+
+.pickupshe{
+    background-image: url("../../img/pickup-time.png");
+    background-repeat: no-repeat;
+    height: 25vh;
+    width:25vh;
+    background-size:contain;
+}
+
+.findloc{
+    background-image: url("../../img/location.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 25vh;
+    width:25vh;
+}
+.fulesurchage{
+    background-image: url("../../img/oil-price.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 25vh;
+    width:25vh;
+}
+.FAQ{
+    background-image: url("../../img/help.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 25vh;
+    width:25vh;
+}
+
+.pickupshetex{
+    font-size: 22px;
+    padding-top: 25vh;
     text-align: center;
-    background-color: #e0f7fa;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .pickupshetex {
-    font-size: 1rem;
-    color: #00796b;
-  }
-  
+}

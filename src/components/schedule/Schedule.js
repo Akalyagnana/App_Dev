@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../Context/UserContext';
 import Footer from '../footer/Footer';
+import { TokenContext } from '../Context/TokenProvider';
 
 const Schedule = () => {
   const [item, setItem] = useState('');
@@ -14,86 +15,73 @@ const Schedule = () => {
   const [pickUpTime, setPickUpTime] = useState('');
   const [dropAddress, setDropAddress] = useState('');
   const [formError, setFormError] = useState('');
-  const [origin, setOrigin] = useState('');
-  const [destination, setDestination] = useState('');
-  const [height, setHeight] = useState('');
-  const [width, setWidth] = useState('');
-  const [length, setLength] = useState('');
-  const [cost, setCost] = useState(null);
   const { user } = useContext(UserContext);
+  const { token } = useContext(TokenContext);
   const navigate = useNavigate();
 
-  const getShippingCost = async (details) => {
-    // Mock API call to get shipping cost
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve((details.weight * 10) + (details.height * details.width * details.length * 0.01)); // Mock calculation
-      }, 1000);
-    });
+  const formatDateTime = (dateTime) => {
+    const date = new Date(dateTime);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.000000`;
   };
-
-  const handleCalculateCost = async () => {
-    if (!weight || !origin || !destination || !height || !width || !length) {
-      setFormError('Please fill in weight, origin, destination, height, width, and length to calculate the cost.');
-      return;
-    }
-
-    // Validate weight is a positive number
-    if (isNaN(weight) || weight <= 0) {
-      setFormError('Please enter a valid weight greater than zero');
-      return;
-    }
-
-    try {
-      const cost = await getShippingCost({ weight, height, width, length });
-      setCost(cost);
-      setFormError('');
-    } catch (error) {
-      console.error('Error calculating shipping cost:', error);
-      setFormError('Error calculating shipping cost. Please try again.');
-    }
-  };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Validate all fields are filled
-    if (!item || !weight || !pickUpTime || !dropAddress || !origin || !destination || !height || !width || !length) {
+  
+    if (!item || !weight || !pickUpTime || !dropAddress) {
       setFormError('All fields are required');
       return;
     }
-
-    // Validate weight is a positive number
+  
     if (isNaN(weight) || weight <= 0) {
       setFormError('Please enter a valid weight greater than zero');
       return;
     }
 
-    try {
-      const cost = await getShippingCost({ weight, height, width, length });
-      setCost(cost);
+    const currentDateTime = new Date();
+    const selectedDateTime = new Date(pickUpTime);
 
-      const response = await axios.post('http://localhost:8080/pickup', {
+    if (selectedDateTime < currentDateTime) {
+      setFormError('Pick-up time cannot be in the past');
+      return;
+    }
+  
+    const formattedPickUpTime = formatDateTime(pickUpTime);
+  
+    try {
+      const response = await axios.post('http://localhost:8000/pickups/', {
         item,
         weight,
-        pickUpTime,
-        dropAddress,
-        userId: user.id,
-        origin,
-        destination,
-        height,
-        width,
-        length,
-        cost,
+        pickuptime: formattedPickUpTime,
+        dropaddress: dropAddress,
+        user: user.id
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
       });
-
+  
       const pickupId = response.data.id;
-
-      // Navigate to the payment page with cost and pickupId
-      navigate('/payment', { state: { cost, pickupId } });
-
+  
+      alert(`Pickup scheduled successfully! Your pickup ID is ${pickupId}.`);
+  
+      setItem('');
+      setWeight('');
+      setPickUpTime('');
+      setDropAddress('');
+      setFormError('');
+  
+      navigate('/home');
+  
     } catch (error) {
-      console.error('Error scheduling pickup:', error);
+      console.error('Error scheduling pickup:', error.response?.data || error.message);
       setFormError('Error scheduling pickup. Please try again.');
     }
   };
@@ -130,11 +118,14 @@ const Schedule = () => {
             id="pickuptime"
             label="Pick Up Time"
             variant="filled"
-            type="time"
-            placeholder='Select the pick-up time'
+            type="datetime-local"
+            placeholder='Select the pick-up date and time'
             style={{ width: '50%' }}
             value={pickUpTime}
             onChange={(e) => setPickUpTime(e.target.value)}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
           <br/><br/>
           <TextField
@@ -147,66 +138,7 @@ const Schedule = () => {
             onChange={(e) => setDropAddress(e.target.value)}
           />
           <br/><br/>
-          <TextField
-            id="origin"
-            label="Origin"
-            variant="filled"
-            placeholder='Enter the origin city or ZIP code'
-            style={{ width: '50%' }}
-            value={origin}
-            onChange={(e) => setOrigin(e.target.value)}
-          />
-          <br/><br/>
-          <TextField
-            id="destination"
-            label="Destination"
-            variant="filled"
-            placeholder='Enter the destination city or ZIP code'
-            style={{ width: '50%' }}
-            value={destination}
-            onChange={(e) => setDestination(e.target.value)}
-          />
-          <br/><br/>
-          <TextField
-            id="height"
-            label="Height (cm)"
-            variant="filled"
-            type="number"
-            placeholder='Enter the height of the package in cm'
-            style={{ width: '50%' }}
-            value={height}
-            onChange={(e) => setHeight(e.target.value)}
-            InputProps={{ inputProps: { min: 0 } }}
-          />
-          <br/><br/>
-          <TextField
-            id="width"
-            label="Width (cm)"
-            variant="filled"
-            type="number"
-            placeholder='Enter the width of the package in cm'
-            style={{ width: '50%' }}
-            value={width}
-            onChange={(e) => setWidth(e.target.value)}
-            InputProps={{ inputProps: { min: 0 } }}
-          />
-          <br/><br/>
-          <TextField
-            id="length"
-            label="Length (cm)"
-            variant="filled"
-            type="number"
-            placeholder='Enter the length of the package in cm'
-            style={{ width: '50%' }}
-            value={length}
-            onChange={(e) => setLength(e.target.value)}
-            InputProps={{ inputProps: { min: 0 } }}
-          />
-          <br/><br/>
-          <Button variant="contained" size="large" onClick={handleCalculateCost}>Calculate Cost</Button>
-          <br/><br/>
           {formError && <p style={{ color: 'red' }}>{formError}</p>}
-          {cost && <p>Estimated Cost: ₹{cost}</p>}
           <Button variant="contained" size="large" type="submit">Schedule Pick up</Button>
         </form>
       </div>

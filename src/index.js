@@ -22,10 +22,13 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import UserProvider from "./components/Context/UserProvider";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { TokenProvider } from "./components/Context/TokenProvider";
 
 ReactDOM.render(
+  <TokenProvider>
   <UserProvider>
     <App />
-  </UserProvider>,
+  </UserProvider>
+  </TokenProvider>,
   document.getElementById("root")
 );

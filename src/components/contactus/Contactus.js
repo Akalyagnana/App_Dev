@@ -4,9 +4,11 @@ import './Contactus.css';
 import Header from '../Header/Header';
 import UserContext from '../Context/UserContext';
 import Footer from '../footer/Footer';
+import { TokenContext } from '../Context/TokenProvider';
 
 const Contactus = () => {
   const { user } = useContext(UserContext);
+  const {token}=useContext(TokenContext);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -18,27 +20,33 @@ const Contactus = () => {
       return;
     }
     setError('');
-
+  
     try {
-      await axios.post('http://localhost:8080/feedback', {
-        userId: user.id,
+      await axios.post('http://localhost:8000/feedbacks/', {
+        user: user.id,
         name: user.name,
         email: user.email,
         message,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
       });
       setSuccess('Feedback submitted successfully!');
       setMessage('');
     } catch (err) {
-      console.error('Error submitting feedback:', err);
+      console.error('Error submitting feedback:', err.response?.data || err.message);
       setError('Failed to submit feedback. Please try again.');
     }
   };
+  
 
   return (
     <div>
       <Header />
       <div className="contactus-container">
-        <h1>Contact Us</h1>
+        <h1>Feedback form</h1>
         <p>We value your feedback. Please fill out the form below to share your thoughts or concerns.</p>
         {error && <p className="error">{error}</p>}
         {success && <p className="success">{success}</p>}

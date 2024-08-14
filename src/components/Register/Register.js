@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Register.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -10,6 +10,7 @@ import Header from '../Header/Header';
 import validator from 'validator';
 import axios from 'axios';
 import Footer from '../footer/Footer';
+import { TokenContext } from '../Context/TokenProvider';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -20,6 +21,7 @@ const Register = () => {
   const [country, setCountry] = useState('');
   const [state, setState] = useState('');
   const [zipcode, setZipcode] = useState('');
+  const [passw, setPassw] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -30,6 +32,8 @@ const Register = () => {
   const [zipcodeError, setZipcodeError] = useState('');
   const [formError, setFormError] = useState('');
   const navigate = useNavigate();
+
+  const{token}=useContext(TokenContext);
 
   const handleEmailChange = (e) => {
     const newEmail = e.target.value;
@@ -63,18 +67,20 @@ const Register = () => {
 
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
-    setPassword(newPassword);
+  setPassword(newPassword);
 
-    
-    const passwordRegex = /^(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    if (!passwordRegex.test(newPassword)) {
-      setPasswordError('Weak Password');
-    } else if (confirmPassword && newPassword !== confirmPassword) {
-      setPasswordError('Passwords do not match');
-    } else {
-      setPasswordError('');
-    }
+  const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  
+  if (!passwordRegex.test(newPassword)) {
+    setPasswordError('weak password');
+  } else if (confirmPassword && newPassword !== confirmPassword) {
+    setPasswordError('Passwords do not match');
+  } else {
+    setPasswordError('');
+  }
+  
   };
+  
 
   const handleConfirmPasswordChange = (e) => {
     const newConfirmPassword = e.target.value;
@@ -84,6 +90,7 @@ const Register = () => {
     } else {
       setPasswordError('');
     }
+    setPassw(password);
   };
 
   const handleCountryChange = (e) => {
@@ -101,6 +108,24 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    try{
+      const emailCheckResponse = await axios.get(`http://localhost:8000/users/${email}/`, {
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+          },
+      });
+
+    
+      if (emailCheckResponse.status === 200) {
+        setEmailError("Email already found");
+        return;
+      }
+    }catch(error){
+      setEmailError('');
+      console.log(error);
+    }
+
     if (!name || !email || !phone || !password || !confirmPassword || !country || !state || !zipcode) {
       setFormError('All fields are required');
       return;
@@ -111,15 +136,16 @@ const Register = () => {
       return;
     }
 
-    try {
-      const emailCheckResponse = await axios.get(`http://localhost:8080/users?email=${email}`);
-      console.log(emailCheckResponse);
-      if (emailCheckResponse.data.length>0) {
-        setFormError('Email already exists');
-        return;
-      }
+    if (!token) {
+      setFormError('Token is missing. Please try again later.');
+      return;
+    }
 
-      const response = await axios.post('http://localhost:8080/users', {
+    try {
+       
+      
+      
+      const response = await axios.post('http://localhost:8000/users/', {
         name,
         email,
         phone,
@@ -127,23 +153,33 @@ const Register = () => {
         country,
         state,
         zipcode,
+        passw
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
       });
-      console.log('User registered successfully:', response.data);
-      navigate('/');
-      setName('');
-      setEmail('');
-      setPhone('');
-      setPassword('');
-      setConfirmPassword('');
-      setCountry('');
-      setState('');
-      setZipcode('');
-      setFormError('');
+      
+
+        console.log('User registered successfully:', response.data);
+        navigate('/login');
+        setName('');
+        setEmail('');
+        setPhone('');
+        setPassword('');
+        setConfirmPassword('');
+        setCountry('');
+        setState('');
+        setZipcode('');
+        setFormError('');
     } catch (error) {
-      console.error('Error registering user:', error);
-      setFormError('Error registering user. Please try again.');
+        console.error('Error registering user:', error.response ? error.response.data : error.message);
+        setFormError('Error registering user. Please try again.');
+      
+      
     }
-  };
+};
 
   return (
     <div>

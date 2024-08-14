@@ -1,35 +1,20 @@
-.Headertop {
-    display: flex;
+.Headertop{
+    display:flex;
     justify-content: space-between;
+    flex-direction: row;
+    background-color: rgb(15, 128, 128);
+    padding: 30px;
+
+}
+
+.nearcp{
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
-    padding: 1rem;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .nearcp {
-    display: flex;
-    align-items: center;
-  }
-  
-  .elementhead {
-    margin-right: 1rem;
-  }
-  
-  .manageshipment {
-    margin-right: 1rem;
-  }
-  
-  button {
-    background-color: #1976d2;
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #1565c0;
-  }
-  
+}
+
+.elementhead{
+    padding-right: 50px;
+}
+

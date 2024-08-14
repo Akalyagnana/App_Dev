@@ -11,7 +11,7 @@ const Header = () => {
           <div className='nearcp'>
           
           <div className='elementhead'>
-            <NavLink to="/" style={{color:"black", 
+            <NavLink to="/home" style={{color:"black", 
             textDecoration:'none',
             fontSize:'30px',
             fontFamily:'fantasy'
@@ -33,7 +33,7 @@ const Header = () => {
             <NavLink to="/contactus" style={{color:"black", 
             textDecoration:'none',
             fontSize:'25px'
-            }}>{"Contact Us"}</NavLink>
+            }}>{"Feedback"}</NavLink>
             
             </div>
             

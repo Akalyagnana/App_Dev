@@ -7,13 +7,11 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import Footer from '../footer/Footer';
 
 const Home = () => {
-
   const { user } = useContext(UserContext);
   const [orderId, setOrderId] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  
   const handleTrack = () => {
     if (!orderId) {
       setError('Order ID is required');
@@ -55,7 +53,7 @@ const Home = () => {
       <div className='homemangefet'>
         <div className='pickupshe'>
           <p className='pickupshetex'>
-            <NavLink to="/schepic" style={{ textDecoration: 'none', color: "rgb(118, 118, 159)" }}>
+            <NavLink to="/schepic" style={{ textDecoration: 'none', color: "rgb(118, 118, 159)",fontSize:"20px" }}>
               Schedule Pickup
             </NavLink>
           </p>

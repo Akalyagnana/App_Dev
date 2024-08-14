@@ -5,8 +5,6 @@ import Footer from '../footer/Footer';
 import { Button, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import deliveryImage from '../../img/delivery-image.jpg';
-
-// Import icons
 import trackingIcon from '../../img/track.png';
 import inventoryIcon from '../../img/inventry.png';
 import schedulingIcon from '../../img/auto_schedule.png';
@@ -20,14 +18,13 @@ const Info = () => {
     navigate('/login');
   };
 
-  const handleOrderSearch = (e) => {
-    e.preventDefault();
+  const handleTracklogin = () => {
     if (!orderId) {
-      setError('Please enter an Order ID.');
-    } else {
-      setError('');
-      navigate('/tracker', { state: { orderId } });
+      setError('Order ID is required');
+      return;
     }
+    setError('');
+    navigate('/tracker', { state: { orderId } });
   };
 
   return (
@@ -54,7 +51,7 @@ const Info = () => {
         </div>
       </div>
 
-      {/* Boxed Columns Section */}
+      
       <div className="boxed-columns-container">
         <div className="boxed-column">
           <img src={trackingIcon} alt="Tracking Icon" className="column-icon" />
@@ -89,7 +86,7 @@ const Info = () => {
           </div>
         </div>
         <div className="order-tracking-right">
-          <form onSubmit={handleOrderSearch}>
+          <form onSubmit={handleTracklogin}>
             <div>
               <TextField
                 id="orderId"
@@ -114,20 +111,7 @@ const Info = () => {
         </div>
       </div>
 
-      {/* Cost Estimation Section */}
-      <div className="cost-estimation-container">
-        <div className="cost-estimation-text-section">
-          <h2>Estimate Your Package Cost</h2>
-          <p>Want to know the cost of shipping your package? Use our cost estimation tool to get an estimate before you proceed with the booking.</p>
-          <Button 
-            variant="contained" 
-            color="secondary" 
-            onClick={() => navigate('/cost-estimation')}
-          >
-            Get Estimate
-          </Button>
-        </div>
-      </div>
+      
 
       <Footer />
     </div>

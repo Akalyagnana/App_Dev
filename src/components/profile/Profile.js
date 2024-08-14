@@ -7,9 +7,11 @@ import './Profile.css';
 import IconButton from '@mui/material/IconButton';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import Footer from '../footer/Footer';
+import { TokenContext } from '../Context/TokenProvider';
 
 const Profile = () => {
   const { user, logout } = useContext(UserContext);
+  const {token}=useContext(TokenContext);
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
@@ -46,27 +48,33 @@ const Profile = () => {
       setPasswordError('All fields are required');
       return;
     }
-
+  
     if (newPassword !== confirmNewPassword) {
       setPasswordError('New passwords do not match');
       return;
     }
-
+  
     if (!validatePassword(newPassword)) {
       setPasswordError('Password must contain at least 8 characters, including 1 uppercase letter, 1 number, and 1 special character');
       return;
     }
-
+  
     if (newPassword === currentPassword) {
       setPasswordError('New password cannot be the same as the current password');
       return;
     }
-
+  
     try {
-      const response = await axios.patch(`http://localhost:8080/users/${user.id}`, {
-        password: newPassword
-      });
-
+      const response = await axios.patch(`http://localhost:8000/users/${user.id}/`,{
+        passw:newPassword,
+        password:newPassword
+      }, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        },
+    });
+      
       if (response.status === 200) {
         setSuccessMessage('Password changed successfully');
         setCurrentPassword('');
@@ -76,10 +84,11 @@ const Profile = () => {
         setPasswordError('Failed to change password');
       }
     } catch (error) {
-      console.error('Error changing password:', error);
+      console.error('Error changing password:', error.response?.data || error.message);
       setPasswordError('Error changing password. Please try again.');
     }
   };
+  
 
   const handleLogout = () => {
     logout();
