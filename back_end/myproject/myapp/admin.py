@@ -3,7 +3,7 @@ from .models import User, Pickup, Feedback
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'email', 'phone', 'country', 'state', 'zipcode')
+    list_display = ('id', 'name', 'email', 'phone', 'country', 'state', 'zipcode','passw')
     search_fields = ('email', 'name')
 
 @admin.register(Pickup)

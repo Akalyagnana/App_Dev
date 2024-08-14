@@ -4,7 +4,7 @@ from .models import User, Pickup, Feedback
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'name', 'email', 'phone', 'password', 'country', 'state', 'zipcode']
+        fields = ['id', 'name', 'email', 'phone', 'password', 'country', 'state', 'zipcode','passw']
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
